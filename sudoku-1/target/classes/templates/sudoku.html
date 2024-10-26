@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Sudoku</title>
+        <link rel="stylesheet"th:href="@{/styles.css}"> <!-- href="../static/styles.css" -->
+       
+    </head>
+    <body>
+        <h1>Sudoku Online</h1>
+        <br>
+        <div id="top-bar">
+            <span id="easy" class="bar-btn">Easy</span>
+            <span id="medium" class="bar-btn">Medium</span>
+            <span id="hard" class="bar-btn">Hard</span>
+            <span id="new-game">New Game</span>
+            <span id="time-counter">00:00:00</span>
+            <span id="errors">0</span>
+            <span id="solution">Solve</span>
+        </div>
+        <br>
+        
+        <!-- 9*9 -->
+        <div id="board">
+            <script th:inline="javascript">
+                var game_level = /*[[${game_level}]]*/ '';
+                var board = /*[[${board}]]*/ [[]];
+                var solution = /*[[${solution}]]*/ [[]];
+                var empty_tiles =  /*[[${empty_tiles}]]*/ 0;
+            </script>
+        </div>
+        <br>
+        <div id="digits"></div>
+
+        <!--Game Over Modal-->
+        <div id="gameOverModal" style="display: none;">
+            <div id="modalContent">
+                <p id="modal-message"></p>
+                <button id="reloadButton">Play Again</button>
+            </div>
+        </div>
+  
+        <script  th:src="@{/sudoku1.js}"></script> <!--src="../static/sudoku.js" -->
+    </body>
+</html>
+
+
+<!-- 
+<script th:inline="javascript">
+    var yourJsVariable = /*[[${yourJavaVariable}]]*/ 'default';
+</script>
+
+NOTE : The fallback value should match the expected JavaScript 
+type ([] for arrays, {} for objects, '' for strings, 0 for numbers, false for booleans).
+
+ -->
